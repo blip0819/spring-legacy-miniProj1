@@ -8,10 +8,12 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.kosa.proj.board.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,14 +27,28 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/board")
 public class BoardController {
 	private static final long serialVersionUID = 1L;
+
+	//xml 또는 어노터이션 처리하면 스프링 
+	//어노터이션 처리하면 스프링 부트   
 	private final BoardService boardService;
-	
+	private final CodeService codeService;
+
 	@RequestMapping("list")
-	public String list(BoardVO board, Model model) throws ServletException, IOException {
+	public String list(@Valid PageRequestVO pageRequestVO, BindingResult bindingResult, Model model) throws ServletException, IOException {
 		log.info("목록");
-				
-		List<BoardVO> list1 = boardService.list(board);
-		model.addAttribute("list", list1);
+		
+		log.info(pageRequestVO.toString());
+
+        if(bindingResult.hasErrors()){
+        	pageRequestVO = PageRequestVO.builder().build();
+        }
+        
+		//2. jsp출력할 값 설정
+		model.addAttribute("pageResponseVO", boardService.getList(pageRequestVO));
+		//model.addAttribute("sizes", new int[] {10, 20, 50, 100});
+		model.addAttribute("sizes", codeService.getList());
+//		model.addAttribute("sizes", "10,20,50,100");
+		
 		return "board/list";
 	}
 

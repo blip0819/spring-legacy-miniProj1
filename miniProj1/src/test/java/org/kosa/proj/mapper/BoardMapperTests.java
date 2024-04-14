@@ -1,8 +1,12 @@
-package org.kosa.proj;
+package org.kosa.proj.mapper;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.kosa.proj.board.BoardVO;
+import org.kosa.proj.board.PageRequestVO;
+import org.kosa.proj.board.PageResponseVO;
 import org.kosa.proj.board.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @ContextConfiguration(locations="file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class BoardMapperTests {
 
-    @Autowired(required = false)
+    @Autowired
     private BoardMapper boardMapper;
 
     @Test
@@ -39,5 +43,25 @@ public class BoardMapperTests {
 	    	
 	    	boardMapper.insert(boardVO);
     	}
+    }
+    
+    @Test 
+    public void testPage() {
+        PageRequestVO  pageRequestVO = PageRequestVO.builder().pageNo(1).size(10).build();
+    	List<BoardVO> list = boardMapper.getList(pageRequestVO);
+        int total = boardMapper.getTotalCount(pageRequestVO);
+        
+        log.info("list {} ", list);
+        log.info("total  = {} ", total);
+
+        PageResponseVO<BoardVO> pageResponseVO = PageResponseVO.<BoardVO>withAll()
+                .list(list)
+                .total(total)
+                .size(pageRequestVO.getSize())
+                .pageNo(pageRequestVO.getPageNo())
+                .build();
+
+        log.info("pageResponseVO  = {} ", pageResponseVO);
+
     }
 }

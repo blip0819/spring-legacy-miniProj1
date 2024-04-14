@@ -19,31 +19,44 @@ public class BoardService {
     
 	private final BoardMapper boardMapper;
 	
-	public List<BoardVO> list(BoardVO board) throws ServletException, IOException {
-		return boardMapper.list(board);
+	 public PageResponseVO<BoardVO> getList(PageRequestVO pageRequestVO) {
+	    	List<BoardVO> list = boardMapper.getList(pageRequestVO);
+	        int total = boardMapper.getTotalCount(pageRequestVO);
+	        
+	        log.info("list {} ", list);
+	        log.info("total  = {} ", total);
+
+	        PageResponseVO<BoardVO> pageResponseVO = PageResponseVO.<BoardVO>withAll()
+	                .list(list)
+	                .total(total)
+	                .size(pageRequestVO.getSize())
+	                .pageNo(pageRequestVO.getPageNo())
+	                .build();
+
+	        return pageResponseVO;
 	}
 	
-	public BoardVO view(BoardVO board) throws ServletException, IOException {
+	public BoardVO view(BoardVO board){
 		return boardMapper.view(board);
 	}
 	
-	public int delete(BoardVO board)throws ServletException, IOException {
+	public int delete(BoardVO board){
 		return boardMapper.delete(board);
 	}
 	
-	public BoardVO updateForm(BoardVO board)throws ServletException, IOException {
+	public BoardVO updateForm(BoardVO board){
 		return boardMapper.view(board);
 	}
 	
-	public int update(BoardVO board) throws ServletException, IOException {
+	public int update(BoardVO board){
 		return boardMapper.update(board);
 	}
 	
-	public BoardVO insertForm(BoardVO board) throws ServletException, IOException {
+	public BoardVO insertForm(BoardVO board){
 		return boardMapper.view(board);
 	}
 	
-	public int insert(BoardVO board) throws ServletException, IOException  {
+	public int insert(BoardVO board){
 		return boardMapper.insert(board);
 	}
 
