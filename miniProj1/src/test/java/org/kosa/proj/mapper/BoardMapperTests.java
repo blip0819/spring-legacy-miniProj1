@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.kosa.proj.board.BoardVO;
-import org.kosa.proj.board.PageRequestVO;
-import org.kosa.proj.board.PageResponseVO;
-import org.kosa.proj.board.mapper.BoardMapper;
+import org.kosa.proj.board.BoardMapper;
+import org.kosa.proj.entity.BoardVO;
+import org.kosa.proj.page.PageRequestVO;
+import org.kosa.proj.page.PageResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;

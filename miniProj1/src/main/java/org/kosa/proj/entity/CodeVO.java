@@ -1,4 +1,4 @@
-package org.kosa.proj.board;
+package org.kosa.proj.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

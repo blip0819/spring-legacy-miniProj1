@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.kosa.proj.board.BoardService;
+import org.kosa.proj.code.CodeService;
+import org.kosa.proj.entity.BoardVO;
+import org.kosa.proj.page.PageRequestVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

@@ -1,9 +1,8 @@
-package org.kosa.proj.board;
+package org.kosa.proj.code;
 
 import java.util.List;
 
-import org.kosa.proj.board.mapper.BoardMapper;
-import org.kosa.proj.board.mapper.CodeMapper;
+import org.kosa.proj.entity.CodeVO;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;

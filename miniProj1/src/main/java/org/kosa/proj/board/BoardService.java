@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
-import org.kosa.proj.board.mapper.BoardMapper;
+import org.kosa.proj.entity.BoardVO;
+import org.kosa.proj.page.PageRequestVO;
+import org.kosa.proj.page.PageResponseVO;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;

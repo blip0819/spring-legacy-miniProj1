@@ -1,4 +1,4 @@
-package org.kosa.proj.board;
+package org.kosa.proj.page;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
