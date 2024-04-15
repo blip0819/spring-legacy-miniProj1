@@ -3,6 +3,7 @@ package org.kosa.proj.code;
 import java.util.List;
 
 import org.kosa.proj.entity.CodeVO;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CodeService {
 	private static final long serialVersionUID = 1L;
       
-	private final CodeMapper  codeMapper;
+	private final CodeMapper codeMapper;
 
     public List<CodeVO> getList() {
     	return codeMapper.getList();

@@ -1,9 +1,6 @@
 package org.kosa.proj.board;
 
-import java.io.IOException;
 import java.util.List;
-
-import javax.servlet.ServletException;
 
 import org.kosa.proj.entity.BoardVO;
 import org.kosa.proj.page.PageRequestVO;

@@ -13,7 +13,7 @@
     </sql>
 
 
-    <select id="getList" resultType="org.kosa.proj.BoardVO">
+    <select id="getList" resultType="BoardVO">
 		select 
 			b.*, m.memberName bwriter  
 		from tb_board b inner join tb_member m on b.memberID = m.memberID

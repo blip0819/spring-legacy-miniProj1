@@ -2,15 +2,12 @@ package org.kosa.proj.board;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.kosa.proj.board.BoardService;
 import org.kosa.proj.code.CodeService;
 import org.kosa.proj.entity.BoardVO;
 import org.kosa.proj.page.PageRequestVO;
