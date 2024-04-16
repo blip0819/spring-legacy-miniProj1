@@ -30,8 +30,7 @@
     <img src="img/누워있기.jpeg">
     <div id="login-form">
         <h1>로그인 화면 </h1>
-        <form id="rForm" action="member" method="post">
-            <input type="hidden" name="action" value="login">
+    	<form id="rForm" action="" method="post">
             <div class="form-group">
                 <label for="memberID">아이디 : </label>
                 <input type="text" id="memberID" name="memberID" required="required" placeholder="아이디를 입력해주세요">
@@ -46,10 +45,33 @@
                 <label for="autologin">자동로그인</label>
             </div>
             <input type="submit" value="로그인" style="margin-left: 110px;">
-			<a href="mainDefault.html" style="margin-left: 30px;">취소</a>
+			<a href="javascript:history(-1)" style="margin-left: 30px;">취소</a>
         </form>
     </div>
     <img src="img/도파민중독자.jpg">
 </div>
+
+<script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
+<script type="text/javascript">
+	
+const rForm = document.getElementById("rForm");
+rForm.addEventListener("submit", e => {
+	//서버에 form data를 전송하지 않는다 
+	e.preventDefault();
+	
+	myFetch("login", "rForm", json => {
+		if(json.status == 0) {
+			//성공
+			alert(json.loginVO.memberName + " 회원님 로그인 감사합니다");
+			//location = "<c:url value='/board/list'/>"; //절대 경로, 컨텍스트명 자동 변경 
+			//location = "/mini/board/list"; //절대 경로 
+			location = "../board/list"; //상대경로 
+		} else {
+			alert(json.statusMessage);
+		}
+	});
+});
+
+</script>  
 </body>
 </html>

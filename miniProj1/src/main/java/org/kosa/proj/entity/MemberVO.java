@@ -18,4 +18,7 @@ public class MemberVO {
 	private String memberPhone;
 	private String memberGen;
 	
+	public boolean isEqualsPwd(String pwd) {
+		return this.memberPW.equals(pwd);		
+	}
 }

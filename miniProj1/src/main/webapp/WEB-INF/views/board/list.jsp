@@ -52,7 +52,7 @@
     </nav>
     	
     <h1>게시판</h1>
-    <h3>로그인 : ${loginVO.username} </h3>
+    <h3>로그인 : ${loginVO.memberName} </h3>
     <form id="searchForm" action="list" method="post" >
         <select id="size" name="size" >
         	<c:forEach var="size" items="${sizes}">

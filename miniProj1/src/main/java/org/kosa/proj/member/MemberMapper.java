@@ -1,5 +1,11 @@
 package org.kosa.proj.member;
 
-public class MemberMapper {
+import org.apache.ibatis.annotations.Mapper;
+import org.kosa.proj.entity.MemberVO;
+
+@Mapper
+public interface MemberMapper {
+
+	MemberVO login(MemberVO boardVO);
 
 }
