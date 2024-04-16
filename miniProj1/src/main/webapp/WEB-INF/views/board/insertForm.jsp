@@ -12,11 +12,11 @@
 </head>
 <body>
 <nav>
-    <ul>
-        <li><a href="corpInfo.html">회사 소개</a></li>
-        <li><a href="<c:url value='/member/signupForm'/>">회원가입</a></li>
-        <li><a href="<c:url value='/member/loginForm'/>">로그인</a></li>
-        <li><a href="<c:url value='/board/list'/>">게시판</a></li>
+   <ul>
+    	<li><a href="corpInfo.html">회사 소개</a></li>
+    	<li><a href="<c:url value='/member/signupForm'/>">회원가입</a></li>
+    	<li><a href="<c:url value='/member/loginForm'/>">로그인</a></li>
+    	<li><a href="<c:url value='/board/list'/>">게시판</a></li>
     </ul>
 </nav>
 
@@ -24,9 +24,8 @@
     <img src="img/귀여움자격증.jpeg" width=360px>
     <div id="insert-form">
         <h1>게시글 작성</h1>
-        <form id="rForm" action="board" method="post">
-            <input type="hidden" name="action" value="boardInsert">
-            
+        <h3>로그인 : ${loginVO.memberName} </h3>
+        <form id="rForm" action="insert" method="post">            
             
             <div class="form-group">
              	<label>제목 : </label>
@@ -40,44 +39,34 @@
 
             <br>
         <input type="submit" value="등록" >
-        <a href="board?action=boardList">취소</a>
+         <a href="javascript:history(-1)">취소</a>
         </form>
     </div>
     <img src="img/귀염둥이.jpeg" width=360px>
     </div>
     
-    <script type="text/javascript" src="<c:url value='/js/common.js'/>"></script>
-
-	<script>
+    <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
+    
+		<script type="text/javascript">
+		    
 		    const rForm = document.getElementById("rForm");
-		    const btitle = document.getElementById("btitle");
-		    const bcontent = document.getElementById("bcontent");
-		
 		    rForm.addEventListener("submit", e => {
-		        e.preventDefault();
-		
-		        const param = {
-		            action: 'boardInsert',
-		            btitle: btitle.value,
-		            bcontent: bcontent.value
-		        };
-		        
-
-		        fetch("board", {
-		            method: "POST",
-		            body: JSON.stringify(param),
-		            headers: {"Content-type": "application/json; charset=utf-8"}
-		        }).then(res => res.json()).then(json => {
-		            console.log("json ", json);
-		            if (json.status == 0) {
-		                // 성공
-		                alert("게시글 작성이 완료되었습니다.");
-		                location = "board?action=boardList";
-		            } else {
-		                alert(json.statusMessage);
-		            }
-		        });
+		    	//서버에 form data를 전송하지 않는다 
+		    	e.preventDefault();
+		    	
+		    	myFetch("insert", "rForm", json => {
+					switch(json.status) {
+					case 0:
+						//성공
+						alert("게시물을 등록 하였습니다");
+						location = "list";
+						break;
+					default:
+						alert(json.statusMessage);
+					}
+				});
 		    });
+		    
 		</script>
 
 </body>
