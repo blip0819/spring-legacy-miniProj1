@@ -61,8 +61,9 @@ public class BoardController {
 
 	@RequestMapping("delete")
 	@ResponseBody
-	public Object delete(@RequestBody BoardVO board) throws ServletException, IOException {
-		log.info("삭제");
+	public Map<String, Object> delete(@RequestBody BoardVO board) throws ServletException, IOException {
+		log.info("삭제 -> {}", board);
+		//1. 처리
 		int updated = boardService.delete(board);
 		
 		Map<String, Object> map = new HashMap<>();
@@ -70,11 +71,10 @@ public class BoardController {
 			map.put("status", 0);
 		} else {
 			map.put("status", -99);
-			map.put("statusMessage", "게시물 삭제에 실패하였습니다");
+			map.put("statusMessage", "게시물 정보 삭제 실패하였습니다");
 		}
 		
 		return map;
-		
 	}
 	
 //	@RequestMapping("clear")
@@ -102,9 +102,9 @@ public class BoardController {
 
 	@RequestMapping("update")
 	@ResponseBody
-	public Object update(@RequestBody BoardVO board) throws ServletException, IOException {
-		log.info("수정 완료");
-		
+	public Map<String, Object> update(@RequestBody BoardVO board) throws ServletException, IOException {
+		log.info("수정 board => {}", board);
+				
 		int updated = boardService.update(board);
 		
 		Map<String, Object> map = new HashMap<>();
@@ -117,13 +117,14 @@ public class BoardController {
 		
 		return map;
 	}
-
+	
+	@RequestMapping("insert")
 	public Object insertForm(HttpServletRequest request) throws ServletException, IOException {
 		log.info("작성 화면");
 		return "boardInsertForm";
 	}
 
-	public Object boardInsert(HttpServletRequest request, BoardVO board) throws ServletException, IOException {
+	public Map<String, Object> insert(BoardVO board, Model model) throws ServletException, IOException {
 		log.info("게시 완료");
 		
 		int updated = boardService.insert(board);

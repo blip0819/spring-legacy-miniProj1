@@ -56,7 +56,7 @@
 		update
 			TB_BOARD
 		set
-			btitle = #{btitle}
+			btitle = #{btitle},
 			bcontent = #{bcontent} 
 		where bno = #{bno}
 	</update>
