@@ -24,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginFilter implements Filter {
 	Set<String> actionSet = new HashSet<String>();
+	Set<String> webSet = new HashSet<String>();
        
     /**
      * @see HttpFilter#HttpFilter()
@@ -52,7 +53,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 	String url = req.getRequestURI();
 
 	log.info("loginFilter url = " + url);
-	if (!actionSet.contains(url)) {
+	if (!actionSet.contains(url)&& !webSet.stream().anyMatch(webUrl -> url.startsWith(webUrl))) {
 		if (loginVO == null) {
 			//로그인 되지 않았으면 로그인 페이지로 이동한다
 			resp.sendRedirect("/proj/member/loginForm");
@@ -67,10 +68,12 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
  * @see Filter#init(FilterConfig)
  */
 public void init(FilterConfig fConfig) throws ServletException {
+	actionSet.add("/proj/");
 	actionSet.add("/proj/member/loginForm");
 	actionSet.add("/proj/member/login");
 	actionSet.add("/proj/member/insertForm");
 	actionSet.add("/proj/member/insert");
+	webSet.add("/proj/resources");
 }
 
 }

@@ -53,3 +53,9 @@ const myFetch = (url, formId, handler) => {
 		if (handler) handler(json);
 	});	
 }
+
+const menuActive = link_id => {
+	document.querySelector("#" + link_id).classList.add("active");
+}
+
+console.log(location.pathname)

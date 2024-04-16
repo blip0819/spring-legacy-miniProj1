@@ -7,19 +7,19 @@
 <head>
 <link href="resources/css/main.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>메인 페이지</title></head>
+<title>메인 페이지</title>
+<%@ include file="/WEB-INF/views/include/css.jsp" %>
+<%@ include file="/WEB-INF/views/include/js.jsp" %>
+</head>
 <body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" style="background-color:#F6F6F6">
-    <div class="menu" >
-        <nav class="clearfix">
-            <ul class="clearfix">
-                <li><a href="corpInfo.html">회사 소개</a></li>
-                <li><a href="<c:url value='/member/signupForm'/>">회원가입</a></li>
-                <li><a href="<c:url value='/member/loginForm'/>">로그인</a></li>
-                <li><a href="<c:url value='/board/list'/>">게시판</a></li>
-            </ul>
-            <a id="pull" href="#"></a>
-        </nav>
-    </div> 
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+
+         <script>
+        menuActive("home_link");
+        </script>
+
         <img src="resources/img/떡볶이사주기쿠폰.jpg">
+        
+        <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

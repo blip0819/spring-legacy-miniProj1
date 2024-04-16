@@ -9,8 +9,11 @@
 <link href="css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>게시글 수정</title>
+    <%@ include file="/WEB-INF/views/include/css.jsp" %>
+    <%@ include file="/WEB-INF/views/include/js.jsp" %>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <nav>
     <ul>
         <li><a href="corpInfo.html">회사 소개</a></li>
@@ -58,6 +61,7 @@
 		<script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
 
 		<script type="text/javascript">
+		menuActive("board_link");
 			
 		const rForm = document.getElementById("rForm");
 		rForm.addEventListener("submit", e => {
@@ -83,5 +87,6 @@
     <img src="img/아프지마.jpeg" width=360px>
     </div>
 
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

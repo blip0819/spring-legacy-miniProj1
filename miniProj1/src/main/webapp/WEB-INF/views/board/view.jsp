@@ -9,16 +9,11 @@
 <link href="/resources/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>게시글 자세히보기</title>
+    <%@ include file="/WEB-INF/views/include/css.jsp" %>
+    <%@ include file="/WEB-INF/views/include/js.jsp" %>
 </head>
 <body>
-    <nav>
-        <ul>
-        	<li><a href="corpInfo.html">회사 소개</a></li>
-        	<li><a href="<c:url value='/member/signupForm'/>">회원가입</a></li>
-        	<li><a href="<c:url value='/member/loginForm'/>">로그인</a></li>
-        	<li><a href="<c:url value='/board/list'/>">게시판</a></li>
-        </ul>
-    </nav>
+ <%@ include file="/WEB-INF/views/include/header.jsp" %>
     
     <div id="container">
         <img src="resources/img/스불행.jpeg" width="360px">
@@ -33,6 +28,7 @@
             
             <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
             <script>
+            menuActive("board_link");
             function jsDelete() {
             	if (confirm("정말로 삭제하시겠습니까?")) {
             		myFetch("delete", "viewForm", json => {
@@ -71,7 +67,7 @@
                 </div>
 
         <img src="img/사랑평화행복.jpeg" width="360px">
-        
+        <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 </body>
 </html>

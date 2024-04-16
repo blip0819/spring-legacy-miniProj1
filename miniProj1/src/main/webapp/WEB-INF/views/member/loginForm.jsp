@@ -9,6 +9,8 @@
 	<link href="css/layout.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>로그인화면</title>
+    <%@ include file="/WEB-INF/views/include/css.jsp" %>
+    <%@ include file="/WEB-INF/views/include/js.jsp" %>
 
 </head>
 <c:if test="${not empty param.err}">
@@ -17,15 +19,7 @@
 </script>    
 </c:if>
 <body>
-<nav>
-    <ul>
-    	<li><a href="corpInfo.html">회사 소개</a></li>
-    	<li><a href="<c:url value='/member/signupForm'/>">회원가입</a></li>
-    	<li><a href="<c:url value='/member/loginForm'/>">로그인</a></li>
-    	<li><a href="<c:url value='/board/list'/>">게시판</a></li>
-    </ul>
-</nav>
-
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <div id="container">
     <img src="img/누워있기.jpeg">
     <div id="login-form">
@@ -73,5 +67,6 @@ rForm.addEventListener("submit", e => {
 });
 
 </script>  
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

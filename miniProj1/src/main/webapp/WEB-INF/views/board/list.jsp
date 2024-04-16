@@ -9,10 +9,11 @@
 	<link href="resources/css/menu.css" rel="stylesheet">
 	<link href="resources/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>게시물 목록</title>
-     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>
+    <%@ include file="/WEB-INF/views/include/css.jsp" %>
+    <%@ include file="/WEB-INF/views/include/js.jsp" %>
+</head>
+
+<style>
         table {
             width: 80%;
             border-collapse: collapse;
@@ -40,16 +41,9 @@
             text-align: center;
         }
     </style>
-</head>
+
 <body>
-	<nav>
-        <ul>
-            <li><a href="corpInfo.html">회사 소개</a></li>
-            <li><a href="<c:url value='/member/signupForm'/>">회원가입</a></li>
-            <li><a href="<c:url value='/member/loginForm'/>">로그인</a></li>
-            <li><a href="<c:url value='/board/list'/>">게시판</a></li>
-        </ul>
-    </nav>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
     	
     <h1>게시판</h1>
     <h3>로그인 : ${loginVO.memberName} </h3>
@@ -109,7 +103,7 @@
     </div>
     
 	<script>
-
+	menuActive("board_link");
 	document.querySelector(".pagination").addEventListener("click", function (e) {
 	    e.preventDefault()
 	
@@ -143,5 +137,6 @@
 	    <div class="button-container">
 	        <a href="insertForm">등록</a>
 	    </div>
+	    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 	</body>
 </html>
