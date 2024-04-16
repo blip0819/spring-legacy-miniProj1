@@ -116,19 +116,22 @@ public class BoardController {
 			map.put("status", 0);
 		} else {
 			map.put("status", -99);
-			map.put("statusMessage", "게시물 정보 수정 실패하였습니다");
+			map.put("statusMessage", "게시물 수정에 실패하였습니다");
 		}
 		
 		return map;
 	}
 
-	public Object insertForm(HttpServletRequest request) throws ServletException, IOException {
-		log.info("작성 화면");
-		return "boardInsertForm";
+	@RequestMapping("insertForm")
+	public Object insertForm() throws ServletException, IOException {
+		log.info("작성 화면");		
+		return "board/insertForm";
 	}
 
-	public Object boardInsert(HttpServletRequest request, BoardVO board) throws ServletException, IOException {
-		log.info("게시 완료");
+	@RequestMapping("insert")
+	@ResponseBody
+	public Map<String, Object> insert(@RequestBody BoardVO board) throws ServletException, IOException {
+		log.info("작성 board => {}", board);
 		
 		int updated = boardService.insert(board);
 

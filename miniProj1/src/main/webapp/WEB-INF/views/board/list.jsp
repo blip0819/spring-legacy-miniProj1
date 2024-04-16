@@ -141,7 +141,7 @@
 	}
 	</script>      
 	    <div class="button-container">
-	        <a href="board.do?action=insertForm">등록</a>
+	        <a href="insertForm">등록</a>
 	    </div>
 	</body>
 </html>
