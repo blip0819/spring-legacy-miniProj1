@@ -45,9 +45,9 @@
 	<nav>
         <ul>
             <li><a href="corpInfo.html">회사 소개</a></li>
-            <li><a href="/member/signupForm">회원가입</a></li>
-            <li><a href="/member/loginForm">로그인</a></li>
-             <li><a href="<c:url value='/board/list'/>">게시판</a></li>
+            <li><a href="<c:url value='/member/signupForm'/>">회원가입</a></li>
+            <li><a href="<c:url value='/member/loginForm'/>">로그인</a></li>
+            <li><a href="<c:url value='/board/list'/>">게시판</a></li>
         </ul>
     </nav>
     	
