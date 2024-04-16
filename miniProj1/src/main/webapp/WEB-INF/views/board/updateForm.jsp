@@ -55,44 +55,27 @@
        			<a href="<c:url value='/board/view&bno=${board.bno}'/>">취소</a>
        	</form>
     
-		<script>
-		    const rForm = document.getElementById("rForm");
-		    const bno = document.getElementById("bno");
-		    const btitle = document.getElementById("btitle");
-		    const bcontent = document.getElementById("bcontent");
-		    const bwriter = document.getElementById("bwriter");
-		    const bdate = document.getElementById("bdate");
-		
-		    rForm.addEventListener("submit", e => {
-		        e.preventDefault();
-		
-		        const param = {
-		            action: 'update',
-		            bno: bno.value,
-		            btitle: btitle.value,
-		            bcontent: bcontent.value,
-		            bwriter: bwriter.value,
-		            bdate: bdate.value
-		        };
-		        
+		<script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
 
+		<script type="text/javascript">
+			
+		const rForm = document.getElementById("rForm");
+		rForm.addEventListener("submit", e => {
+			//서버에 form data를 전송하지 않는다 
+			e.preventDefault();
+			
+			myFetch("update", "rForm", json => {
+				if(json.status == 0) {
+					//성공
+					alert("게시물 정보 수정을 성공 하였습니다");
+					location = "view?bno=" + bno.value;
+				} else {
+					alert(json.statusMessage);
+				}
+			});
+		});
 		
-		        fetch("update", {
-		            method: "POST",
-		            body: JSON.stringify(param),
-		            headers: {"Content-type": "application/json; charset=utf-8"}
-		        }).then(res => res.json()).then(json => {
-		            console.log("json ", json);
-		            if (json.status == 0) {
-		                // 성공
-		                alert("게시글 수정이 완료되었습니다.");
-		                location = "view&bno=" + bno.value;
-		            } else {
-		                alert(json.statusMessage);
-		            }
-		        });
-		    });
-		</script>
+		</script>   
  
 
 

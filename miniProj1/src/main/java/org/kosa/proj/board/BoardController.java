@@ -95,16 +95,20 @@ public class BoardController {
 
 	@RequestMapping("updateForm")
 	public Object updateForm(BoardVO board, Model model) throws ServletException, IOException {
-		log.info("수정 화면");
+		log.info("수정화면");
+		
+		//2. jsp출력할 값 설정
 		model.addAttribute("board", boardService.updateForm(board));
-		return "board/updateForm";
+		
+		return "board/updateForm"; 
 	}
 
 	@RequestMapping("update")
 	@ResponseBody
-	public Object update(@RequestBody BoardVO board) throws ServletException, IOException {
-		log.info("수정 완료");
+	public Map<String, Object>  update(@RequestBody BoardVO board) throws ServletException, IOException {
+		log.info("수정 board => {}", board);
 		
+		//1. 처리
 		int updated = boardService.update(board);
 		
 		Map<String, Object> map = new HashMap<>();
@@ -112,7 +116,7 @@ public class BoardController {
 			map.put("status", 0);
 		} else {
 			map.put("status", -99);
-			map.put("statusMessage", "게시물 수정에 실패하였습니다.");
+			map.put("statusMessage", "게시물 정보 수정 실패하였습니다");
 		}
 		
 		return map;

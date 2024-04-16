@@ -50,7 +50,7 @@
             function jsUpdateForm() {
             	if (confirm("정말로 수정하시겠습니까?")) {
             		//서버의 URL을 설정한다 
-            		location = "updateForm";
+            		viewForm.action = "updateForm";
             	
             		//서버의 URL로 전송한다 
             		viewForm.submit();
