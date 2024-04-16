@@ -27,7 +27,7 @@
             <label>게시글 번호 : ${board.bno}</label><br/>
             <label>제목 : ${board.btitle}</label><br/><br/>
             <label>내용 : ${board.bcontent}</label><br/><br/>
-            <label>ViewCount : ${board.view_count}</label><br/>
+            <label>조회수 : ${board.view_count}</label><br/>
             <label>작성자: ${board.memberID}</label><br>
             <label>작성일: ${board.bdate}</label><br>
             

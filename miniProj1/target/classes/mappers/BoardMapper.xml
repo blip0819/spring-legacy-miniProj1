@@ -35,6 +35,12 @@
 		where bno = #{bno}
 	</select>
 	
+	<update id="incViewCount" >
+		update tb_board set
+			 view_count = view_count + 1
+		where bno = #{bno}
+	</update>
+	
 	<delete id="delete">
 		delete 
 		from TB_BOARD 
