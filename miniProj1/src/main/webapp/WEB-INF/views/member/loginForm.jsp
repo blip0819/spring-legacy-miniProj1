@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link href="css/menu.css" rel="stylesheet">
-	<link href="css/font.css" rel="stylesheet">
-	<link href="css/layout.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>로그인화면</title>
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
@@ -21,7 +20,7 @@
 <body>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <div id="container">
-    <img src="img/누워있기.jpeg">
+    <img src="${pageContext.request.contextPath}/resources/img/누워있기.jpeg">
     <div id="login-form">
         <h1>로그인 화면 </h1>
     	<form id="rForm" action="" method="post">
@@ -42,7 +41,7 @@
 			<a href="javascript:history(-1)" style="margin-left: 30px;">취소</a>
         </form>
     </div>
-    <img src="img/도파민중독자.jpg">
+    <img src="${pageContext.request.contextPath}/resources/img/도파민중독자.jpg">
 </div>
 
 <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>

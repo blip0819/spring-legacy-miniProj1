@@ -6,8 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="resources/css/menu.css" rel="stylesheet">
-	<link href="resources/css/font.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
     <%@ include file="/WEB-INF/views/include/js.jsp" %>

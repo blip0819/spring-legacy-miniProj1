@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
-<link href="css/menu.css" rel="stylesheet">
-<link href="css/layout.css" rel="stylesheet">
-<link href="css/font.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>게시글 작성</title>
 <%@ include file="/WEB-INF/views/include/css.jsp" %>
@@ -16,7 +15,7 @@
  <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 <div id="container">
-    <img src="img/귀여움자격증.jpeg" width=360px>
+    <img src="${pageContext.request.contextPath}/resources/img/귀여움자격증.jpeg" width=360px>
     <div id="insert-form">
         <h1>게시글 작성</h1>
         <h3>로그인 : ${loginVO.memberName} </h3>
@@ -37,7 +36,7 @@
          <a href="javascript:history(-1)">취소</a>
         </form>
     </div>
-    <img src="img/귀염둥이.jpeg" width=360px>
+    <img src="${pageContext.request.contextPath}/resources/img/귀염둥이.jpeg" width=360px>
     </div>
     
     <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>

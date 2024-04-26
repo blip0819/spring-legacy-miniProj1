@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="/resources/css/menu.css" rel="stylesheet">
-<link href="/resources/css/layout.css" rel="stylesheet">
-<link href="/resources/css/font.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>게시글 자세히보기</title>
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
@@ -16,7 +15,7 @@
  <%@ include file="/WEB-INF/views/include/header.jsp" %>
     
     <div id="container">
-        <img src="resources/img/스불행.jpeg" width="360px">
+        <img src="${pageContext.request.contextPath}/resources/img/스불행.jpeg" width="360px">
         <div id="view">
             <h1>게시글 자세히보기</h1>
             <label>게시글 번호 : ${board.bno}</label><br/>
@@ -65,8 +64,10 @@
                     <a href="updateForm?bno=${board.bno}">수정</a>
                     <a href="delete?bno=${board.bno}">삭제</a>
                 </div>
+                </div>
 
-        <img src="img/사랑평화행복.jpeg" width="360px">
+        <img src="${pageContext.request.contextPath}/resources/img/사랑평화행복.jpeg" width="360px">
+        </div>
         <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 </body>

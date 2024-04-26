@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="resources/css/main.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>메인 페이지</title>
 <%@ include file="/WEB-INF/views/include/css.jsp" %>
@@ -18,7 +18,7 @@
         menuActive("home_link");
         </script>
 
-        <img src="resources/img/떡볶이사주기쿠폰.jpg">
+        <img src="${pageContext.request.contextPath}/resources/img/떡볶이사주기쿠폰.jpg">
         
         <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>

@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="css/menu.css" rel="stylesheet">
-<link href="css/layout.css" rel="stylesheet">
-<link href="css/font.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>게시글 수정</title>
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
@@ -24,7 +23,7 @@
 </nav>
 
 <div id="container">
-    <img src="img/건강챙겨.png" width=360px>
+    <img src="${pageContext.request.contextPath}/resources/img/건강챙겨.png" width=360px>
         
             <div id = update-form>
             <h1>게시글 수정</h1>
@@ -84,7 +83,7 @@
 
 
     </div>
-    <img src="img/아프지마.jpeg" width=360px>
+    <img src="${pageContext.request.contextPath}/resources/img/아프지마.jpeg" width=360px>
     </div>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
