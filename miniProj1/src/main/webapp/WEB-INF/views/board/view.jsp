@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>게시글 자세히보기</title>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>게시글 수정</title>

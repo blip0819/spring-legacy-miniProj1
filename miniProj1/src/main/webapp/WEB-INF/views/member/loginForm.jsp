@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>로그인화면</title>
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
