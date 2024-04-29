@@ -39,11 +39,9 @@
     <img src="${pageContext.request.contextPath}/resources/img/귀염둥이.jpeg" width=360px>
     </div>
     
-    <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
-    
+		<script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
 		<script type="text/javascript">
 		menuActive("board_link");
-		    
 		    const rForm = document.getElementById("rForm");
 		    rForm.addEventListener("submit", e => {
 		    	//서버에 form data를 전송하지 않는다 
