@@ -55,7 +55,7 @@
             </div>
 		<br> 
 				<input type="submit" value="수정">
-       			<a href="<c:url value='/board/view&bno=${board.bno}'/>">취소</a>
+       			<a href="<c:url value='/board/view?bno=${board.bno}'/>">취소</a>
        	</form>
     
 		<script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>

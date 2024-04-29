@@ -7,10 +7,34 @@
 <head>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
+    <meta charset="UTF-8">
     <title>게시글 작성</title>
 <%@ include file="/WEB-INF/views/include/meta.jsp" %>
 <%@ include file="/WEB-INF/views/include/css.jsp" %>
 <%@ include file="/WEB-INF/views/include/js.jsp" %>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+	<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+    <style type="text/css">
+    	#rForm {
+    		text-align:center;
+    	}
+	    .btitle {
+			width: 80%;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+		
+	    .ck.ck-editor {
+			width: 80%;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+		
+		.ck-editor__editable {
+			height: 80vh;
+		}
+    </style>
 </head>
 <body>
  <%@ include file="/WEB-INF/views/include/header.jsp" %>
@@ -22,17 +46,9 @@
         <h3>로그인 : ${principal.memberName} </h3>
         <form id="rForm" action="insert" method="post">            
             <sec:csrfInput/>
-            <div class="form-group">
-             	<label>제목 : </label>
-                <textarea id="btitle" name="btitle" rows="1" cols="40" required>${board.btitle}</textarea>
-            </div>
-            
-            <div class="form-group">
-                <label>내용 : </label>
-                <textarea id="bcontent" name="bcontent" rows="5" cols="40" required>${board.bcontent}</textarea>
-            </div>
-
-            <br>
+            <input class="btitle" id="btitle" name="btitle" required="required" placeholder="게시물 제목을 입력해주세요"><br/>
+        	<textarea id="bcontent" name="bcontent" required="required" placeholder="게시물 내용을 입력해주세요">
+			</textarea>
         <input type="submit" value="등록" >
          <a href="javascript:history(-1)">취소</a>
         </form>
@@ -43,6 +59,19 @@
 		<script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
 		<script type="text/javascript">
 		menuActive("board_link");
+		
+		//ckeditor관련 설정 
+		let bcontent; //cfeditor의 객체를 저장하기 위한 변수 
+		ClassicEditor.create(document.querySelector('#bcontent'))
+		.then(editor => {
+			console.log('Editor was initialized');
+			//ckeditor객체를 전역변수 bcontent에 설정함 
+			window.bcontent = editor;
+		})
+		.catch(error => {
+			console.error(error);
+		});
+		
 		    const rForm = document.getElementById("rForm");
 		    rForm.addEventListener("submit", e => {
 		    	//서버에 form data를 전송하지 않는다 
