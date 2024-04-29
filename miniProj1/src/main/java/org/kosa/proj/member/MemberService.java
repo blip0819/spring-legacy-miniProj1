@@ -2,6 +2,11 @@ package org.kosa.proj.member;
 
 import org.kosa.proj.entity.BoardVO;
 import org.kosa.proj.entity.MemberVO;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -16,16 +21,19 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class MemberService {
+public class MemberService implements UserDetailsService {
       
 	private final MemberMapper  memberMapper;
 
-	public MemberVO login(MemberVO memberVO)  {
-		//view Count의 값이 증가된 객체를 얻는다
-		MemberVO resultVO = memberMapper.login(memberVO);
-		if (resultVO != null && memberVO.isEqualsPwd(resultVO.getMemberPW())) {
-			return resultVO;
-		}
+	public static void main(String [] args) {
+		BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+		System.out.println(bcryptPasswordEncoder.encode("1004"));
+		System.out.println(bcryptPasswordEncoder.encode("0123456789010234567890123456789"));
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		MemberVO resultVO = memberMapper.login(MemberVO.builder().memberID(username).build());
 		return null;
 	}
 	
