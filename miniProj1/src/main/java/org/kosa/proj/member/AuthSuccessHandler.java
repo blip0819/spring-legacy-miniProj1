@@ -25,7 +25,10 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     		, Authentication authentication //로그인한 사용자 정보가 있는 객체 
     		) throws IOException, ServletException {
         
+		//로그인 한 마지막 시간 수정 
 		memberMapper.updateMemberLastLogin(authentication.getName());
+		//로그인 실패시 카운트를 초기화 한다 
+		memberMapper.loginCountClear(authentication.getName());
 		
 		System.out.println("authentication ->" + authentication);
 		
