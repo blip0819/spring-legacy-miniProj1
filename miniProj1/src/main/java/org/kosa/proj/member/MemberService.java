@@ -2,7 +2,7 @@ package org.kosa.proj.member;
 
 import org.kosa.proj.entity.BoardVO;
 import org.kosa.proj.entity.MemberVO;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,11 +20,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Slf4j
-@RequiredArgsConstructor
+
 public class MemberService implements UserDetailsService {
       
-	private final MemberMapper  memberMapper;
+	@Autowired
+	private MemberMapper  memberMapper;
 
+	
 	public static void main(String [] args) {
 		BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
 		System.out.println(bcryptPasswordEncoder.encode("1004"));
@@ -33,8 +35,15 @@ public class MemberService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+		log.info("username = {}", username);
 		MemberVO resultVO = memberMapper.login(MemberVO.builder().memberID(username).build());
-		return null;
+		if (resultVO == null) {
+			throw new UsernameNotFoundException(username + " 사용자가 존재하지 않습니다");
+
+
+
+		}
+		return resultVO;
 	}
-	
 }

@@ -7,29 +7,31 @@
     http://www.springframework.org/schema/security 
     http://www.springframework.org/schema/security/spring-security.xsd">
     
+    <beans:bean id ="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    <beans:bean id="customUserDetailsService" class="org.kosa.proj.member.MemberService" />
+    <beans:bean id="authFailureHandler" class="org.kosa.proj.member.AuthFailureHandler" />
+    
     <http pattern="/" security="none"></http>
-    <http pattern="/mylogin" security="none"></http>
-    <http pattern="/loginForm" security="none"></http>
+    <http pattern="/login/loginForm" security="none"></http>
     <http pattern="/resources/**" security="none"></http>
     
     <http auto-config="true">
+    <csrf disabled="true"/>
         <intercept-url pattern="/*/**" access="isAuthenticated()"/>
         <!-- login-page="/login"  -> get방식으로 호출되는 URL -->
         <!-- login-processing-url="/login" -> post방식으로 호출되는 URL -->
         <form-login
-            login-page="/loginForm" 
+            login-page="/login/loginForm" 
             login-processing-url="/login" 
             username-parameter="memberID"
             password-parameter="memberPW" 
-            default-target-url="/" />
+            default-target-url="/" 
+            authentication-failure-handler-ref="authFailureHandler"/>
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="{noop}admin" authorities="ROLE_ADMIN" />
-                <user name="user" password="{noop}user" authorities="ROLE_USER" />
-            </user-service>
+       <authentication-provider user-service-ref="customUserDetailsService">
+            <password-encoder ref="bcryptPasswordEncoder"/>
         </authentication-provider>
     </authentication-manager>
 
