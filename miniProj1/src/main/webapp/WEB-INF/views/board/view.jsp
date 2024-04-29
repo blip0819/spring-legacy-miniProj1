@@ -6,8 +6,8 @@
 <head>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet">
-    <meta charset="UTF-8">
     <title>게시글 자세히보기</title>
+    <%@ include file="/WEB-INF/views/include/meta.jsp" %>
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
     <%@ include file="/WEB-INF/views/include/js.jsp" %>
 </head>

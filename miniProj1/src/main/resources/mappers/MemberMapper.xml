@@ -18,33 +18,5 @@
 		from tb_member   
 		where memberID = #{memberID}
 	</select>
-	
-	<update id="updateMemberLastLogin">
-		update tb_member set 
-			member_last_login_time = now()
-		where memberID = #{memberID}  
-	</update>
-	
-    <update id="loginCountInc">
-		update tb_member set 
-			member_login_count = member_login_count + 1
-			<choose>
-				<when test="member_login_count > 5">
-					, member_account_locked = 'Y'
-				</when>
-				<otherwise>
-					, member_account_locked = 'N'
-				</otherwise>
-			</choose>
-		where memberID = #{memberID} 
-	</update> 
-
-	 
-	<update id="loginCountClear">
-		update tb_member set 
-			 member_login_count = 0 
-			,member_account_locked = 'N'
-		where memberID = #{memberID} 
-	</update> 
     
 </mapper>

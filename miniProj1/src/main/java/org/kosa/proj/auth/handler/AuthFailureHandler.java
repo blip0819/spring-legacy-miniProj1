@@ -1,4 +1,4 @@
-package org.kosa.proj.member;
+package org.kosa.proj.auth.handler;
 
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.authentication.BadCredentialsException;

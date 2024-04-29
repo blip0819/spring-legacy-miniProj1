@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang=kr">
 <head>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
-    <meta charset="UTF-8">
     <title>게시글 수정</title>
+    <%@ include file="/WEB-INF/views/include/meta.jsp" %>
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
     <%@ include file="/WEB-INF/views/include/js.jsp" %>
 </head>
@@ -28,6 +28,7 @@
             <div id = update-form>
             <h1>게시글 수정</h1>
    			<form id="rForm" method="post">
+			<sec:csrfInput/>
             <div class="form-group">
         	<label>게시글 번호 : </label>
         	<input type="text" id="bno" name="bno" value="${board.bno}" readonly="readonly"> <br/>

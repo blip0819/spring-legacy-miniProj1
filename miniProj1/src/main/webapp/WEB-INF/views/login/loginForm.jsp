@@ -26,6 +26,7 @@
         <h1>로그인 화면 </h1>
     	<form id="rForm" action="<c:url value='/login'/>" method="post">
             <div class="form-group">
+            <sec:csrfInput/>
                 <label for="memberID">아이디 : </label>
                 <input type="text" id="memberID" name="memberID" required="required" placeholder="아이디를 입력해주세요">
             </div>

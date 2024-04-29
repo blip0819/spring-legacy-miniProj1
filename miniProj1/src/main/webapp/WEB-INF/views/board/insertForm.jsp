@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/font.css" rel="stylesheet">
-    <meta charset="UTF-8">
     <title>게시글 작성</title>
+<%@ include file="/WEB-INF/views/include/meta.jsp" %>
 <%@ include file="/WEB-INF/views/include/css.jsp" %>
 <%@ include file="/WEB-INF/views/include/js.jsp" %>
 </head>
@@ -18,9 +19,9 @@
     <img src="${pageContext.request.contextPath}/resources/img/귀여움자격증.jpeg" width=360px>
     <div id="insert-form">
         <h1>게시글 작성</h1>
-        <h3>로그인 : ${loginVO.memberName} </h3>
+        <h3>로그인 : ${principal.memberName} </h3>
         <form id="rForm" action="insert" method="post">            
-            
+            <sec:csrfInput/>
             <div class="form-group">
              	<label>제목 : </label>
                 <textarea id="btitle" name="btitle" rows="1" cols="40" required>${board.btitle}</textarea>

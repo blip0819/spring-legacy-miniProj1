@@ -1,4 +1,4 @@
-package org.kosa.proj.member;
+package org.kosa.proj.auth.handler;
 
 import java.io.IOException;
 
@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.kosa.proj.login.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 	
 	@Autowired
-	private MemberMapper memberMapper;
+	private LoginMapper loginMapper;
 	
 	@Override
     public void onAuthenticationSuccess(
@@ -26,9 +27,9 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     		) throws IOException, ServletException {
         
 		//로그인 한 마지막 시간 수정 
-		memberMapper.updateMemberLastLogin(authentication.getName());
+		loginMapper.updateMemberLastLogin(authentication.getName());
 		//로그인 실패시 카운트를 초기화 한다 
-		memberMapper.loginCountClear(authentication.getName());
+		loginMapper.loginCountClear(authentication.getName());
 		
 		System.out.println("authentication ->" + authentication);
 		
