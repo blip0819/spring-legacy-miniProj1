@@ -7,5 +7,6 @@ import org.kosa.proj.entity.MemberVO;
 public interface MemberMapper {
 
 	MemberVO login(MemberVO boardVO);
+	int updateMemberLastLogin(String memberID);
 
 }

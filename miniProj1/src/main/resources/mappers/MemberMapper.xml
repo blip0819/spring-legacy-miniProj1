@@ -19,5 +19,11 @@
 		where memberID = #{memberID}
 	</select>
 	
+	<update id="updateMemberLastLogin">
+		update tb_member set 
+			member_last_login_time = now()
+		where memberID = #{memberID}  
+	</update>
+	
     
 </mapper>

@@ -10,6 +10,7 @@
     <beans:bean id ="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
     <beans:bean id="customUserDetailsService" class="org.kosa.proj.member.MemberService" />
     <beans:bean id="authFailureHandler" class="org.kosa.proj.member.AuthFailureHandler" />
+    <beans:bean id="authSucessHandler" class="org.kosa.proj.member.AuthSuccessHandler" />
     
     <http pattern="/" security="none"></http>
     <http pattern="/login/loginForm" security="none"></http>
@@ -25,8 +26,8 @@
             login-processing-url="/login" 
             username-parameter="memberID"
             password-parameter="memberPW" 
-            default-target-url="/" 
-            authentication-failure-handler-ref="authFailureHandler"/>
+             authentication-failure-handler-ref="authFailureHandler"
+            authentication-success-handler-ref="authSucessHandler"/>
     </http>
 
     <authentication-manager>
