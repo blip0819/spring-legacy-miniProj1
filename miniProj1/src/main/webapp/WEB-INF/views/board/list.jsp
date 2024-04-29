@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/font.css" rel="stylesheet">
-    <meta charset="UTF-8">
+	<%@ include file="/WEB-INF/views/include/meta.jsp" %>
     <%@ include file="/WEB-INF/views/include/css.jsp" %>
     <%@ include file="/WEB-INF/views/include/js.jsp" %>
 </head>
@@ -45,8 +45,9 @@
 	<%@ include file="/WEB-INF/views/include/header.jsp" %>
     	
     <h1>게시판</h1>
-    <h3>로그인 : ${loginVO.memberName} </h3>
+    <h3>로그인 : ${pricipal.memberName} </h3>
     <form id="searchForm" action="list" method="post" >
+    <sec:csrfInput/>
         <select id="size" name="size" >
         	<c:forEach var="size" items="${sizes}">
         		<option value="${size.codeid}" ${pageRequestVO.size == size.codeid ? 'selected' : ''} >${size.name}</option>
